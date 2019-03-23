@@ -262,6 +262,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/23/设置代理-burp抓包/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cypressss">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/55.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/23/设置代理-burp抓包/" itemprop="url">设置代理+burp抓包</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-23T17:33:35+08:00">
+                2019-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="设置代理-burp抓包"><a href="#设置代理-burp抓包" class="headerlink" title="设置代理+burp抓包"></a>设置代理+burp抓包</h1><h2 id="写在前面："><a href="#写在前面：" class="headerlink" title="写在前面："></a>写在前面：</h2><p>火狐抓包，设置代理都比chrome浏览器要简单，所以一般用火狐。但工作实际测试的时候，需要火狐和谷歌两个浏览器切换，所以还是最好两个都配置好代理，以此记录，节省之后重新开始的时间。平常测试不止是需要抓浏览器的包，有时需要测试APP，还又PC客户端，甚至需要用真机，所以需要在各种环境下配置代理。</p>
+<p>记录一下，好记性不如烂笔头。</p>
+<h2 id="一、burp破解版安装-常用操作"><a href="#一、burp破解版安装-常用操作" class="headerlink" title="一、burp破解版安装+常用操作"></a>一、burp破解版安装+常用操作</h2><h3 id="1-comparer"><a href="#1-comparer" class="headerlink" title="1.comparer"></a>1.comparer</h3><p>比较两个数据包</p>
+<h3 id="2-右键-change-request-method"><a href="#2-右键-change-request-method" class="headerlink" title="2.右键 change request method"></a>2.右键 change request method</h3><p>更改请求提交方式，如get-&gt;post</p>
+<h3 id="3-右键-Engagement-tool-gt-Genarate-CSRF-PoC"><a href="#3-右键-Engagement-tool-gt-Genarate-CSRF-PoC" class="headerlink" title="3.右键 Engagement tool-&gt;Genarate CSRF PoC"></a>3.右键 Engagement tool-&gt;Genarate CSRF PoC</h3><p>生成CSRF PoC 可发送回浏览器，request提交之后burp要记得把请求放掉</p>
+<h3 id="4-scanner"><a href="#4-scanner" class="headerlink" title="4.scanner"></a>4.scanner</h3><p>抓包，右键 Do an active scan</p>
+<h2 id="二、burp抓https的包"><a href="#二、burp抓https的包" class="headerlink" title="二、burp抓https的包"></a>二、burp抓https的包</h2><h3 id="火狐浏览器配置代理-导入burp证书抓https包"><a href="#火狐浏览器配置代理-导入burp证书抓https包" class="headerlink" title="火狐浏览器配置代理+导入burp证书抓https包"></a>火狐浏览器配置代理+导入burp证书抓https包</h3><ol>
+<li>安装火狐代理proxyfoxy<br>添加127代理（跟burp设置成一样的）<br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/2IEInomIXgu9.png?imageslim" alt="mark"></li>
+<li>浏览器访问<a href="http://burp" target="_blank" rel="noopener">http://burp</a> 下载证书<br>记得先开代理才能打开<br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/lv4AHaDlbGyn.png?imageslim" alt="mark"></li>
+<li>浏览器打开-&gt;选项-&gt;隐私与安全-&gt;证书-&gt;导入<br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/VLaDKnCk4o7z.png?imageslim" alt="mark"><br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/BuxuTrgXc8Qj.png?imageslim" alt="mark"></li>
+<li>导完证书<br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/Vy9sDvVUAJmE.png?imageslim" alt="mark"><br>至此，火狐浏览器可以成功抓取https的包</li>
+</ol>
+<h3 id="谷歌浏览器配置代理-导入burp证书抓https包"><a href="#谷歌浏览器配置代理-导入burp证书抓https包" class="headerlink" title="谷歌浏览器配置代理+导入burp证书抓https包"></a>谷歌浏览器配置代理+导入burp证书抓https包</h3><p>chrome没有自带的代理设置，都是调用系统的，所以导入burp证书也是顺带导入到系统中。  </p>
+<ol>
+<li>在应用商店（要翻墙）下载switchtomega（经试验，在网上下载再导入很难成功）<br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/eq34WiktHzci.png?imageslim" alt="mark"></li>
+<li>导入已经下载到本地的burp证书<br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/BvVU0wHzDUa5.png?imageslim" alt="mark"><br>ps：另一种方式是直接双击证书（cacert.der）安装</li>
+<li>导入成功<br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/mToYGd5I19wu.png?imageslim" alt="mark"></li>
+<li>在给公司电脑导入证书的时候遇到个问题–导不进去。具体是导入“受信任的根证书颁发机构”会自动导进旁边的“中间证书颁发机构”，但是证书并不能生效。  </li>
+</ol>
+<ul>
+<li>解决办法是直接双击证书，然后导入-&gt;勾选存在物理存储区<br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/e6qGHbfcTQ5w.png?imageslim" alt="mark"><br>这是一个解决办法，具体情况还是要看缘分。:)</li>
+</ul>
+<h2 id="三、burp-逍遥模拟器抓包"><a href="#三、burp-逍遥模拟器抓包" class="headerlink" title="三、burp+逍遥模拟器抓包"></a>三、burp+逍遥模拟器抓包</h2><ol>
+<li>官网下载逍遥模拟器（或者夜神）然后设置代理<br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/LHS1EPj2kq0T.png?imageslim" alt="mark"></li>
+<li>代理要设置成本机IP，burp里也一样<br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/sc6nt2jhwlNG.png?imageslim" alt="mark"><br>3。 burp设置代理成本机IP<br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/GdS2NepdWEtp.png?imageslim" alt="mark"></li>
+<li>安装burp证书抓https包<br>在安装证书前要设置一个初始密码，不然会安装失败（第一次安装就是因为没有设置初始密码，所以总是失败，关键是还没有提示是哪里有问题，但是这次在自己电脑上还提示了）<br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/Nr8Qxux47hYQ.png?imageslim" alt="mark"></li>
+<li>把本地下载好的burp证书拖到模拟器里，双击安装<br><img src="http://poo1tcth6.bkt.clouddn.com/blog/20190323/uPejQWL0I5FX.png?imageslim" alt="mark"><br>没有意外就能顺利安装成功。:)<br>==<strong>ps:模拟器里常按鼠标左键显示高级选项</strong>==</li>
+</ol>
+<p>++先写到这里，祝我下次安装好运，还有看到这篇文章的各位好汉++。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/hello/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1035,7 +1183,7 @@ hexo d
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1043,6 +1191,15 @@ hexo d
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>
